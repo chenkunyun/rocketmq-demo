@@ -128,7 +128,6 @@ logs/
 Thumbs.db
 
 # other ignore
-demo/
 .metadata
 /.metadata/
 /Servers/
