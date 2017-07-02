@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  mvc:
+    static-path-pattern: /resources/**
+  application:
+    name: rocketmq-demo-consumer
+
+rocketmq:
+    consumer:
+      instanceName: TestConsumer
+      namesrvAddr: localhost:9876
+      groupName: TestConsumerGroup
+      topic: ORDER
+      tag: meituan
+      consumeThreadMin: 20
+      consumeThreadMax: 64

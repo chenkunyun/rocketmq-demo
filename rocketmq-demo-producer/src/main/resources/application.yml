@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  mvc:
+    static-path-pattern: /resources/**
+  application:
+    name: rocketmq-demo-producer
+
+rocketmq:
+  producer:
+    namesrvAddr: localhost:9876
+    groupName: TestProducerGroup
+    instanceName: TestInstance
+    topic: ORDER
+    tag: meituan
+    maxMessageSizeBytes: 131072
+    sendMsgTimeoutSecond: 10000
