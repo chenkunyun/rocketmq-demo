@@ -30,7 +30,8 @@ public class OrderConsumeServiceImpl implements OrderConsumeService {
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-        Message msg = msgs.get(0);
+        MessageExt msg = msgs.get(0);
+        logger.info("begin consuming, msgid:{}", msg.getMsgId());
         ConsumeConcurrentlyStatus status = ConsumeConcurrentlyStatus.RECONSUME_LATER;
         try {
             Order order = JSON.parseObject(msg.getBody(), Order.class);
@@ -39,7 +40,7 @@ public class OrderConsumeServiceImpl implements OrderConsumeService {
         } catch (Exception ex) {
             logger.error("consume failed, exception:{}", ex);
         }
-
+        logger.info("end consuming, msgid:{}, status:{}", msg.getMsgId(), status);
         return status;
     }
 
